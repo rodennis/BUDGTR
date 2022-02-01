@@ -29,7 +29,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<Months months={months}/>}/>
-        <Route path='/:month' element={<Month months={months}/>}/>
+        <Route path='/:id' element={<Month months={months} bills={bills} />}/>
       </Routes>
     </div>
   );

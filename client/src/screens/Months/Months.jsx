@@ -6,7 +6,7 @@ function Months({months}) {
       {
           months.map((month, index) => (
               <div key={index}>
-                  <Link to={`/${month.month}`}><h1>{month.month}</h1></Link>
+                  <Link to={`/${month.id}`}><h1>{month.month}</h1></Link>
               </div>
           ))
       }
