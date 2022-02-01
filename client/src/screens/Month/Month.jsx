@@ -2,19 +2,21 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AddBillForm from "../../components/AddBillForm/AddBillForm";
-import {monthUrl, billUrl} from '../../services/api'
+import { monthUrl, billUrl } from "../../services/api";
+import AddBudget from "../../components/AddBudget/AddBudget";
+import MonthlyBills from "../../components/MonthlyBills/MonthlyBills";
 
-function Month({ months, bills }) {
+function Month({ months, bills, setToggle }) {
   const params = useParams();
 
-  const [monthlyBills, setMonthlyBills] = useState([])
   const [month, setMonth] = useState({});
-  const [budget, setBudget] = useState('')
+  const [budget, setBudget] = useState(0);
+  const [deletedBill, setDeletedBill] = useState(0);
   const [bill, setBill] = useState({
     name: "",
     date: "",
     price: 0,
-    months: ""
+    months: "",
   });
 
   useEffect(() => {
@@ -23,11 +25,17 @@ function Month({ months, bills }) {
     });
     setMonth(foundMonth);
 
-    const foundBills = bills.filter(bill => {
-      return parseInt(bill.months) === parseInt(params.id)
-    })
-    setMonthlyBills(foundBills)
-  }, [bills, month, months, params.id]);
+    if (deletedBill) {
+      const updateBudget = async () => {
+        const addDeletedBill = parseInt(month?.budget) + deletedBill;
+        await axios.put(`${monthUrl}/${params.id}/`, {
+          ...month,
+          budget: addDeletedBill,
+        });
+      };
+      updateBudget();
+    }
+  }, [bills, deletedBill, month, months, params.id]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -47,27 +55,31 @@ function Month({ months, bills }) {
   const onSubmit = async (e) => {
     e.preventDefault();
     month.bills.push(bill.name);
-    const subtract = parseInt(month.budget) - bill.price
-    await axios.post(billUrl, newBill);
-    await axios.put(monthUrl, {...month, budget: subtract});
+    const subtract = parseInt(month.budget) - bill.price;
+    await axios.post(`${billUrl}/`, newBill);
+    await axios.put(`${monthUrl}/${params.id}/`, {
+      ...month,
+      budget: subtract,
+    });
+    setToggle(prevToggle => !prevToggle)
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    await axios.put(monthUrl, {...month, budget: budget})
-  }
-
-  const handleDelete = async (e) => {
-    e.preventDefault()
-
-  }
+    e.preventDefault();
+    await axios.put(`${monthUrl}/${params.id}/`, { ...month, budget: budget });
+    setToggle(prevToggle => !prevToggle)
+  };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={budget} onChange={e => setBudget(e.target.value)}/>
-        <button>submit</button>
-      </form>
+      {
+        month.budget < 1 &&
+      <AddBudget
+        budget={budget}
+        setBudget={setBudget}
+        handleSubmit={handleSubmit}
+      />
+}
       <AddBillForm
         name={bill.name}
         date={bill.date}
@@ -75,19 +87,11 @@ function Month({ months, bills }) {
         handleChange={handleChange}
         onSubmit={onSubmit}
       />
+      <div>
+      <h1>{month?.budget}</h1>
+      </div>
 
-      {
-        monthlyBills &&
-
-        monthlyBills.map((bill, index) => (
-          <div key={index}>
-            <h2>{bill.name}</h2>
-            <h4>Due Date: {bill.date}</h4>
-            <h4>Price: {bill.price}</h4>
-            <button onClick={handleDelete}>Delete</button>
-          </div>
-        ))
-      }
+      <MonthlyBills bills={bills} setDeletedBill={setDeletedBill} setToggle={setToggle}/>
     </div>
   );
 }

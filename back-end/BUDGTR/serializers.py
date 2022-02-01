@@ -12,4 +12,4 @@ class BillSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bill
-        fields = ['name', 'date', 'price', 'months']
+        fields = ['id', 'name', 'date', 'price', 'months']

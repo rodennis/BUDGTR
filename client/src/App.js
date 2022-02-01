@@ -9,6 +9,7 @@ function App() {
 
   const [months, setMonths] = useState([])
   const [bills, setBills] = useState([])
+  const [toggle, setToggle] = useState(false)
 
   useEffect(() => {
     const getMonthsData = async () => {
@@ -24,12 +25,12 @@ function App() {
       setBills(res.data)
     }
     getBillsData()
-  },[])
+  },[toggle])
   return (
     <div className="App">
       <Routes>
         <Route path='/' element={<Months months={months}/>}/>
-        <Route path='/:id' element={<Month months={months} bills={bills} />}/>
+        <Route path='/:id' element={<Month months={months} bills={bills} setToggle={setToggle}/>}/>
       </Routes>
     </div>
   );
