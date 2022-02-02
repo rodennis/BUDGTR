@@ -6,7 +6,7 @@ function AddBillForm({name, price, date, handleChange, onSubmit}) {
           <input className='bill-name' onChange={handleChange} type="text" placeholder='name' name='name' value={name}/>
           <input className='bill-date' onChange={handleChange} type="text" placeholder='date' name='date' value={date}/>
           <input className='bill-price' onChange={handleChange} type="text" placeholder='Amount' name='price' value={price}/>
-          <button>Submit</button>
+          <button className='add-bill-button'>Submit</button>
       </form>
   </div>;
 }

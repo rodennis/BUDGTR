@@ -9,7 +9,7 @@
     border: none;
     border-bottom: 1px solid black;
     background: transparent;
-    width: 50px;
+    width: 75px;
     text-align: center;
     font-size: 25px;
 }
@@ -50,4 +50,41 @@
     border: none;
     border-bottom: 1px solid black;
     margin-right: 15px;
+}
+
+.add-bill-button {
+    border: none;
+    font-size: 15px;
+    margin-left: 20px;
+    padding: 10px;
+    background-color: #FFA69E;
+    color: white;
+    border-radius: 20px;
+}
+
+.budget-title {
+    display: inline;
+}
+
+.budget-title-div {
+    position: absolute;
+    left: 0px;
+    margin-left: 170px;
+    margin-top: -60px;
+}
+
+.single-bill-div {
+
+}
+
+.new-bill-name {
+
+}
+
+.new-bill-date {
+
+}
+
+.new-bill-price {
+    
 }

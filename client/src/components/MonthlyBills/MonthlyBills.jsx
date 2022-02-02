@@ -19,10 +19,10 @@ function MonthlyBills({ bills, setDeletedBill, setToggle}) {
   return <div>
       {monthlyBills &&
         monthlyBills.map((bill, index) => (
-          <div key={index}>
-            <h2>{bill.name}</h2>
-            <h4>Due Date: {bill.date}</h4>
-            <h4>Price: {bill.price}</h4>
+          <div className='single-bill-div' key={index}>
+            <h2 className='new-bill-name'>{bill.name}</h2>
+            <h4 className='new-bill-date'>Due Date: {bill.date}</h4>
+            <h4 className='new-bill-price'>Price: {bill.price}</h4>
             <button
               onClick={async () => {
                 setDeletedBill(parseInt(bill.price));

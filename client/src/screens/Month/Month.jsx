@@ -5,7 +5,7 @@ import AddBillForm from "../../components/AddBillForm/AddBillForm";
 import { monthUrl, billUrl } from "../../services/api";
 import AddBudget from "../../components/AddBudget/AddBudget";
 import MonthlyBills from "../../components/MonthlyBills/MonthlyBills";
-import './Month.css'
+import "./Month.css";
 
 function Month({ months, bills, setToggle }) {
   const params = useParams();
@@ -62,37 +62,44 @@ function Month({ months, bills, setToggle }) {
       ...month,
       budget: subtract,
     });
-    setToggle(prevToggle => !prevToggle)
+    setToggle((prevToggle) => !prevToggle);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios.put(`${monthUrl}/${params.id}/`, { ...month, budget: budget });
-    setToggle(prevToggle => !prevToggle)
+    setToggle((prevToggle) => !prevToggle);
   };
 
   return (
     <div className="single-month-div">
-      {
-        month.budget < 1 &&
-      <AddBudget
-        budget={budget}
-        setBudget={setBudget}
-        handleSubmit={handleSubmit}
-      />
-}
-      <AddBillForm
-        name={bill.name}
-        date={bill.date}
-        price={bill.price}
-        handleChange={handleChange}
-        onSubmit={onSubmit}
-      />
+      {month.budget < 1 && (
+        <AddBudget
+          budget={budget}
+          setBudget={setBudget}
+          handleSubmit={handleSubmit}
+        />
+      )}
       <div>
-      <h1>{month?.budget}</h1>
+        <h2>ADD A BILL</h2>
+        <AddBillForm
+          name={bill.name}
+          date={bill.date}
+          price={bill.price}
+          handleChange={handleChange}
+          onSubmit={onSubmit}
+        />
+        <div className="budget-title-div">
+          <h2 className="budget-title">Budget: </h2>
+          <span className="budget">${month?.budget}</span>
+        </div>
       </div>
 
-      <MonthlyBills bills={bills} setDeletedBill={setDeletedBill} setToggle={setToggle}/>
+      <MonthlyBills
+        bills={bills}
+        setDeletedBill={setDeletedBill}
+        setToggle={setToggle}
+      />
     </div>
   );
 }
