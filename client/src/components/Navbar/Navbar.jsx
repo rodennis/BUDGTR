@@ -8,7 +8,9 @@ function Navbar() {
           <Link className='sign-up' to='/signUp'>Sign Up</Link>
       </div>
       <div className='nav-middle'>
-          <h1 className='Logo'>BUDGTR</h1>
+          <Link className='logo' to='/'> 
+          <h1>BUDGTR</h1>
+          </Link>
       </div>
       <div className='nav-right'>
       <Link className='log-in' to='/logIn'>Log In</Link>

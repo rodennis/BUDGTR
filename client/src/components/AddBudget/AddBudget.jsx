@@ -13,6 +13,7 @@ function AddBudget({ budget, handleSubmit, setBudget }) {
           onChange={(e) => {
             setBudget(e.target.value);
           }}
+          required
           />
           </label>
         <button className="add-budget-button">Add</button>

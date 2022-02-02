@@ -16,7 +16,7 @@ function MonthlyBills({ bills, setDeletedBill, setToggle}) {
           setMonthlyBills(foundBills);
     },[bills, params.id])
 
-  return <div>
+  return <div className='bills-div'>
       {monthlyBills &&
         monthlyBills.map((bill, index) => (
           <div className='single-bill-div' key={index}>
@@ -24,6 +24,7 @@ function MonthlyBills({ bills, setDeletedBill, setToggle}) {
             <h4 className='new-bill-date'>Due Date: {bill.date}</h4>
             <h4 className='new-bill-price'>Price: {bill.price}</h4>
             <button
+            className='delete-bill'
               onClick={async () => {
                 setDeletedBill(parseInt(bill.price));
                 await axios.delete(`${billUrl}/${bill.id}/`);

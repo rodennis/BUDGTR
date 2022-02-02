@@ -22,6 +22,7 @@
     background-color: #FFA69E;
     color: white;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .add-budget-label {
@@ -60,6 +61,7 @@
     background-color: #FFA69E;
     color: white;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .budget-title {
@@ -73,8 +75,17 @@
     margin-top: -60px;
 }
 
-.single-bill-div {
+.bills-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
+.single-bill-div {
+    background-color: #FFA69E;
+    width: 250px;
+    padding-bottom: 20px;
+    margin-top: 50px;
 }
 
 .new-bill-name {
@@ -86,5 +97,15 @@
 }
 
 .new-bill-price {
-    
+
+}
+
+.delete-bill {
+    border: none;
+    font-size: 15px;
+    padding: 10px;
+    background-color: #AED9E0;
+    color: black;
+    border-radius: 20px;
+    cursor: pointer;
 }

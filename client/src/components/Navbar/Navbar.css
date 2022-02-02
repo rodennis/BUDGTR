@@ -19,6 +19,10 @@ nav {
     margin-top: 22px;
 }
 
+.logo{
+    text-decoration: none;
+}
+
 .nav-right {
     flex: 1;
     padding-left: 200px;
