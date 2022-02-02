@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-mb4#we28^@qxwfv%-*nt6g5y!r2*qw(csg+pk)@492h#qf4uy$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['budgtr-database.herokuapp.com', 'localhost']
 CORS_ORIGIN_ALLOW_ALL = True
 
 
