@@ -1,0 +1,40 @@
+nav {
+    display: flex;
+}
+
+.nav-left {
+    flex: 1;
+    padding-top: 30px;
+    padding-right: 200px;
+}
+
+.nav-middle {
+    flex: 1;
+}
+
+.nav-middle h1 {
+    color: #FFA69E;
+    font-size: 55px;
+    font-family: 'prata';
+    margin-top: 22px;
+}
+
+.nav-right {
+    flex: 1;
+    padding-left: 200px;
+    padding-top: 30px;
+}
+
+.log-in {
+    font-size: 30px;
+    font-family: 'prata';
+    text-decoration: none;
+    color: black;
+}
+
+.sign-up {
+    font-size: 30px;
+    font-family: 'prata';
+    text-decoration: none;
+    color: black;
+}

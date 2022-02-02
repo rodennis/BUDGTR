@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import {Routes, Route} from 'react-router-dom'
 import Month from './screens/Month/Month'
 import Months from './screens/Months/Months'
+import Navbar from './components/Navbar/Navbar'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
   },[toggle])
   return (
     <div className="App">
+      <Navbar />
       <Routes>
         <Route path='/' element={<Months months={months}/>}/>
         <Route path='/:id' element={<Month months={months} bills={bills} setToggle={setToggle}/>}/>

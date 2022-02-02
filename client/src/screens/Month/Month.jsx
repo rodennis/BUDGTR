@@ -5,6 +5,7 @@ import AddBillForm from "../../components/AddBillForm/AddBillForm";
 import { monthUrl, billUrl } from "../../services/api";
 import AddBudget from "../../components/AddBudget/AddBudget";
 import MonthlyBills from "../../components/MonthlyBills/MonthlyBills";
+import './Month.css'
 
 function Month({ months, bills, setToggle }) {
   const params = useParams();
@@ -71,7 +72,7 @@ function Month({ months, bills, setToggle }) {
   };
 
   return (
-    <div>
+    <div className="single-month-div">
       {
         month.budget < 1 &&
       <AddBudget
