@@ -1,8 +1,11 @@
 .single-month-div {
     width: 80%;
-    height: 75vh;
+    height: 80%;
     background-color: #AED9E0;
     margin: auto;
+    padding-bottom: 100px;
+    padding-top: 25px;
+    margin-bottom: 50px;
 }
 
 .add-budget {

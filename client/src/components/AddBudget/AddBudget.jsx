@@ -5,17 +5,17 @@ function AddBudget({ budget, handleSubmit, setBudget }) {
     <div>
       <form onSubmit={handleSubmit}>
         <label className="add-budget-label">
-        Add Budget:{' '}
-        <input
-          className="add-budget"
-          type="text"
-          value={budget}
-          onChange={(e) => {
-            setBudget(e.target.value);
-          }}
-          required
+          Add Budget:{" "}
+          <input
+            className="add-budget"
+            type="text"
+            value={budget}
+            onChange={(e) => {
+              setBudget(e.target.value);
+            }}
+            required
           />
-          </label>
+        </label>
         <button className="add-budget-button">Add</button>
       </form>
     </div>

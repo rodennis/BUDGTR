@@ -1,17 +1,13 @@
-import React from 'react';
-import {Link} from 'react-router-dom'
-import './Months.css'
+import React from "react";
+import "./Months.css";
+import MonthCards from "../../components/MonthCards/MonthCards";
 
-function Months({months}) {
-  return <div className='months-div'>
-      {
-          months.map((month, index) => (
-              <div className='single-month' key={index}>
-                  <Link className='single-month-link' to={`/${month.id}`}><h1>{month.month}</h1></Link>
-              </div>
-          ))
-      }
-  </div>;
+function Months({ months }) {
+  return (
+    <>
+      <MonthCards months={months} />
+    </>
+  );
 }
 
 export default Months;

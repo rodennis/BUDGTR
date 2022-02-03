@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AddBillForm from "../../components/AddBillForm/AddBillForm";
-import { monthUrl, billUrl } from "../../services/api";
 import AddBudget from "../../components/AddBudget/AddBudget";
 import MonthlyBills from "../../components/MonthlyBills/MonthlyBills";
 import "./Month.css";
@@ -29,7 +28,7 @@ function Month({ months, bills, setToggle }) {
     if (deletedBill) {
       const updateBudget = async () => {
         const addDeletedBill = parseInt(month?.budget) + deletedBill;
-        await axios.put(`${monthUrl}/${params.id}/`, {
+        await axios.put(`https://budgtr-database.herokuapp.com/month/${params.id}/`, {
           ...month,
           budget: addDeletedBill,
         });
@@ -57,17 +56,22 @@ function Month({ months, bills, setToggle }) {
     e.preventDefault();
     month.bills.push(bill.name);
     const subtract = parseInt(month.budget) - bill.price;
-    await axios.post(`${billUrl}/`, newBill);
-    await axios.put(`${monthUrl}/${params.id}/`, {
+    await axios.post('https://budgtr-database.herokuapp.com/bill/', newBill);
+    await axios.put(`https://budgtr-database.herokuapp.com/month/${params.id}/`, {
       ...month,
       budget: subtract,
     });
+    setBill({
+      name: '',
+      price: '',
+      date: ''
+    })
     setToggle((prevToggle) => !prevToggle);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`${monthUrl}/${params.id}/`, { ...month, budget: budget });
+    await axios.put(`https://budgtr-database.herokuapp.com/month/${params.id}/`, { ...month, budget: budget });
     setToggle((prevToggle) => !prevToggle);
   };
 

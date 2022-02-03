@@ -14,14 +14,14 @@ function App() {
 
   useEffect(() => {
     const getMonthsData = async () => {
-      const url = 'http://127.0.0.1:8000/month/'
+      const url = 'https://budgtr-database.herokuapp.com/month/'
       const res = await axios.get(url)
       setMonths(res.data)
     }
     getMonthsData()
 
     const getBillsData = async () => {
-      const url = 'http://127.0.0.1:8000/bill/'
+      const url = 'https://budgtr-database.herokuapp.com/bill/'
       const res = await axios.get(url)
       setBills(res.data)
     }
